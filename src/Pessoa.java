@@ -1,6 +1,4 @@
 import Conversao.Conversor;
-import Units.Altura;
-import Units.Peso;
 
 public class Pessoa {
 
