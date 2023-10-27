@@ -23,7 +23,7 @@ public class Menu {
     }
 
     private void init() {
-        pessoa = Pessoa.get();
+
     }
 
     public void run() {
@@ -34,6 +34,7 @@ public class Menu {
 
     private void programLoop() {
         while (true) {
+            pessoa = new Pessoa();
             mainMenu();
             int perguntaPesoSignal;
             perguntaPesoSignal = perguntarPeso(pessoa);
@@ -64,7 +65,7 @@ public class Menu {
 
     private int perguntarPeso(Pessoa p) {
         Scanner sc = new Scanner(System.in);
-        System.out.print(entradaPronta("Insira o Peso"));
+        System.out.print(entradaPronta("Insira o Peso, por padrão em kg ou informe unidade"));
         String entrada = sc.nextLine();
         Pattern pattern = Pattern.compile("(\\d+(?:[\\.|\\,]\\d+)?)");
         Matcher matcher = pattern.matcher(entrada);
@@ -86,7 +87,7 @@ public class Menu {
 
     private int perguntarAltura(Pessoa p) {
         Scanner sc = new Scanner(System.in);
-        System.out.print(entradaPronta("Insira a Altura"));
+        System.out.print(entradaPronta("Insira a Altura, por padrão em m ou informe unidade"));
         String entrada = sc.nextLine();
         Pattern pattern = Pattern.compile("(\\d+(?:[\\.|\\,]\\d+)?)");
         Matcher matcher = pattern.matcher(entrada);

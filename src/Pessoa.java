@@ -4,16 +4,9 @@ public class Pessoa {
 
     private double altura;
     private double peso;
-    private static Pessoa instance;
 
-    public static Pessoa get() {
-        if (Pessoa.instance == null) {
-            Pessoa.instance = new Pessoa();
-        }
-        return Pessoa.instance;
-    }
 
-    private Pessoa() {
+    public Pessoa() {
         altura = 0.0;
         peso = 0.0;
     }
