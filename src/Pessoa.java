@@ -30,6 +30,10 @@ public class Pessoa {
         altura = Conversor.FtParaM(_ft) + Conversor.InParaM(_inch);
     }
 
+    public void setAlturaCm(double _altura) {
+        altura = Conversor.CmParaM(_altura);
+    }
+
     public void setPeso(double _peso) {
         peso = _peso;
     }

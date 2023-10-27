@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Menu {
 
@@ -64,13 +66,15 @@ public class Menu {
         Scanner sc = new Scanner(System.in);
         System.out.print(entradaPronta("Insira o Peso"));
         String entrada = sc.nextLine();
+        Pattern pattern = Pattern.compile("(\\d+(?:[\\.|\\,]\\d+)?)");
+        Matcher matcher = pattern.matcher(entrada);
         if (checaEntrada(entrada) == quitSignal) {
             return quitSignal;
         }
-        if (entrada.isEmpty()) {
+        if (entrada.isEmpty() || !matcher.find()) {
             return inputError;
         }
-        double peso = Double.parseDouble(entrada);
+        double peso = Double.parseDouble(matcher.group(1).replaceAll(",", "."));
         if (entrada.toLowerCase().contains("lb")) {
             p.setPesoPound(peso);
         }
@@ -84,16 +88,21 @@ public class Menu {
         Scanner sc = new Scanner(System.in);
         System.out.print(entradaPronta("Insira a Altura"));
         String entrada = sc.nextLine();
+        Pattern pattern = Pattern.compile("(\\d+(?:[\\.|\\,]\\d+)?)");
+        Matcher matcher = pattern.matcher(entrada);
         if (checaEntrada(entrada) == quitSignal) {
             return quitSignal;
         }
-        if (entrada.isEmpty()) {
+        if (entrada.isEmpty() || !matcher.find()) {
             return inputError;
         }
-        double altura = Double.parseDouble(entrada);
+        double altura = Double.parseDouble(matcher.group(1).replaceAll(",", "."));
         double inch = 0.0;
         if (entrada.toLowerCase().contains("ft")) {
             p.setAlturaFt(altura, inch);
+        }
+        else if (entrada.toLowerCase().contains("cm")) {
+            p.setAlturaCm(altura);
         }
         else {
             p.setAltura(altura);

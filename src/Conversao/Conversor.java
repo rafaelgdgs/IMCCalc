@@ -13,4 +13,8 @@ public class Conversor {
     public static double PoundParaKg(double pound) {
         return pound*0.45359237;
     }
+
+    public static double CmParaM(double cm) {
+        return cm/100.0;
+    }
 }
